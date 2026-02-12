@@ -1,27 +1,29 @@
+<h1>Olá mundo</h1>
+
 {{ 'lotion-lp.css' | asset_url |  stylesheet_tag}}
 {% liquid
     assign collections = collections[section.settings.all_collections].all.products
 %}
 
     <header>
-        <h1>{{ page.title }}</h1>
+        <h1>olaaa</h1>
     </header>
 
+    {% assign product = all_products['LoGold'] %}
+
+    <img src="{{ product.featured_image.src | image_url: width: '300px'  }}" alt="{{ product.featured_image.alt }}" width="auto" height="auto">
     <section>
         <main>
             <p>{{ page.content }}</p>
         </main>
 
         {% for product in collection %}
-            <div class="product-card">
+                <div class="product-card">
                 <h2>{{ product.title }}</h2>
                 <p>{{ product.description }}</p>
             </div>
         {% endfor %}
     </section>
-
-
-
 
 
 {% schema %}
