@@ -34,6 +34,8 @@
 
     {% assign selected_collection = section.settings.all_collections %}
 
+    {% if selected_collection != blank %}
+
     {% for product in selected_collection.products %}
 
         <div class="product-card">
@@ -43,8 +45,10 @@
         <a href="{{ product.url }}">Comprar</a>
 
         </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
   </div>
+  
     </section>
 
 
