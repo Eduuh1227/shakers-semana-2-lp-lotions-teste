@@ -1,28 +1,45 @@
-<h1>Olá mundo</h1>
-
 {{ 'lotion-lp.css' | asset_url |  stylesheet_tag}}
 {% liquid
     assign collections = collections[section.settings.all_collections].all.products
 %}
 
     <header>
-        <h1>olaaa</h1>
+        <h1>{{ page.title }}</h1>
     </header>
 
-    {% assign product = all_products['LoGold'] %}
-
-    <img src="{{ product.featured_image.src | image_url: width: '300px'  }}" alt="{{ product.featured_image.alt }}" width="auto" height="auto">
     <section>
         <main>
             <p>{{ page.content }}</p>
         </main>
 
-        {% for product in collection %}
-                <div class="product-card">
-                <h2>{{ product.title }}</h2>
-                <p>{{ product.description }}</p>
-            </div>
-        {% endfor %}
+        <hr>
+
+
+    {% assign featured_product = section.settings.main_product %}
+    {% if featured_product != blank %}
+        <div class="featured-product">
+        <h2>{{ featured_product.title }}</h2> [cite: 32]
+        <p>{{ featured_product.price | money }}</p> [cite: 33]
+        <img src="{{ featured_product.featured_image | img_url: 'medium' }}" alt="{{ featured_product.title }}"> [cite: 34]
+        <a href="{{ featured_product.url }}">Ver produto</a> [cite: 35]
+    </div>
+    {% endif %}
+
+<hr>
+
+
+
+    <div class="collection-list">
+    {% assign selected_collection = section.settings.all_collections %}
+    {% for product in selected_collection.products %}
+        <div class="product-card">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price | money }}</p>
+        <img src="{{ product.featured_image | img_url: 'small' }}" alt="{{ product.title }}">
+        <a href="{{ product.url }}">Comprar</a>
+        </div>
+    {% endfor %}
+  </div>
     </section>
 
 
@@ -30,10 +47,16 @@
 {
     "name": "lotion-lp",
     "settings": [
+
+        {
+            "type": "product",
+            "id": "main_product",
+            "label": "Produto Principal"
+        },
             {
                 "type": "collection",
                 "id": "all_collections",
-                "label": "coleção"
+                "label": "Loções"
             }
         ],
         "presets": [
