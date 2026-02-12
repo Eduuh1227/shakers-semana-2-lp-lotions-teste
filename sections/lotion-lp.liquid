@@ -20,7 +20,7 @@
 
         <h2>{{ featured_product.title }}</h2> 
         <p>{{ featured_product.price | money }}</p> 
-        <img src="{{ featured_product.featured_image | img_url: width: 500 }}" alt="{{ featured_product.title }}"> 
+        <img src="{{ featured_product.featured_image | img_url: 'medium' }}" alt="{{ featured_product.title }}"> 
         <a href="{{ featured_product.url }}">Ver produto</a> 
 
     </div>
@@ -41,7 +41,7 @@
         <div class="product-card">
         <h3>{{ product.title }}</h3>
         <p>{{ product.price | money }}</p>
-        <img src="{{ product.featured_image | img_url: width: 300 }}" alt="{{ product.title }}">
+        <img src="{{ product.featured_image | img_url: 'small' }}" alt="{{ product.title }}">
         <a href="{{ product.url }}">Comprar</a>
 
         </div>
