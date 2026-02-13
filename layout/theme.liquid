@@ -1,11 +1,29 @@
+{{ 'lotion-lp.css' | asset_url | stylesheet_tag }}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    {{ content_for_header }}
-    <title>{{ shop.name }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ shop.name }}</title>
+
+  {{ content_for_header }}
+
 </head>
+
 <body>
+
+  <header>
+    <h2>{{ shop.name }}</h2>
+
+  </header>
+
+  <main>
     {{ content_for_layout }}
+  </main>
+
+  <footer>
+    <p>© {{ shop.name }}</p>
+  </footer>
+
 </body>
 </html>
